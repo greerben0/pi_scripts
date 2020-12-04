@@ -1,4 +1,9 @@
 #!/usr/bin/python
+###
+# Initializes sensehat screen with random colors
+# Picks a color to match on
+# Randomizes all pixels that don't match the choosen color until all pixels match
+###
 import sys, getopt, inspect
 from time import sleep
 from random import randint
@@ -61,7 +66,7 @@ try:
             if not isMatch(grid[i]):
                 grid[i] = [randint(0, 255), randint(0, 255), randint(0, 255)]
             else:
-                #print "Pixel {} matches [{},{},{}]".format(i, red, green, blue)
+                print "Pixel {} matches [{},{},{}]".format(i, red, green, blue)
                 matches += 1
         if matches == 64:
             print "Took {} iterations to all match goal".format(iteration)
@@ -72,7 +77,7 @@ try:
             finally:
                 sys.exit()
         else:
-            #print "Iteration {} had {} matches".format(iteration, matches)
+            print "Iteration {} had {} matches".format(iteration, matches)
             iteration += 1
             matches = 0
             sense.set_pixels(grid)
